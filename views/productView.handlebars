@@ -1,0 +1,21 @@
+{{#if user}}
+    {{#if product}}
+        <div class="mb-3 w-50">
+                <div class="card">
+                    <h5 class="card-header text-center"> {{product.title}} </h5>
+                    <img class="card-image" src="{{product.thumbnail}}" alt="{{product.title}}">
+                    <div class="card-body text-center"> 
+                        <em class="card-title"> {{product.description}} </em>
+                        <p class="card-text text-center"> <b> ${{product.price}} </b>  </p>
+                        <small class="d-block">id: {{product._id}} </small>
+                        <div class="mb-3 text-center">
+                            <input type="number" id="quantityInput" class="quantityInput form-control-sm" max={{product.stock}} min="1" value="1"/>
+                        </div>
+                        <form action="/api/carts/{{user.cart}}/products/{{product._id}}" method="POST">
+                            <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    {{/if}}
+{{/if}}
