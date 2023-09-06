@@ -1,12 +1,13 @@
-<nav>
-    <div class="navbar-nav">
-        <a class="nav-link active" href="/home">Productos</a>
-        <a class="nav-link cart" href="/api/carts/{{user.cart._id}}">Carrito</a>
-        <a class="nav-link" href="/chat">Chat</a>
-        <a class="nav-link" href="/auth/logout">Logout</a>
-    </div>
-</nav>
-
+{{#if user}}
+    <nav class="container-fluid ">
+        <div class="navbar-nav d-flex">
+            <a class="nav-link" href="/home">Productos</a>
+            <a class="nav-link cart" href="/api/carts/{{user.cart}}">Carrito</a>
+            <a class="nav-link" href="/chat">Chat</a>
+            <a class="nav-link" href="/auth/logout">Logout</a>
+        </div>
+    </nav>
+{{/if}}
 <div class="container">
     <h1 class="text-center">By Sof - Products</h1>
 
@@ -23,7 +24,7 @@
                         <div class="mb-3 text-center">
                             <input type="number" id="quantityInput" class="quantityInput form-control-sm" max={{this.stock}} min="1" value="1"/>
                         </div>
-                        <a href="/api/products/{{this._id}}">Ver producto</a>
+                        <a class="btn btn-outline-primary" href="/api/products/{{this._id}}">Ver producto</a>
                     </div>
                 </div>
             </div>
@@ -42,23 +43,3 @@
 
 <script src="../public/cart.js"></script>
 
-    {{!-- btnAdd.addEventListener('click', async () => {
-        const prodId = btnAdd.dataset.id
-        console.log('ID producto:', prodId)
-        const cart = await getCart()
-        
-        try{
-            const res = await fetch(`/api/carts/${cart}/products/${prodId}`, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({quantity: quantity.value})
-            })
-            const data = await res.json()
-            console.log('Product added to cart', data)
-        }catch(err){
-            console.log('Error adding product to cart', err)
-        }
-
-    }) --}}

@@ -48,9 +48,9 @@ class ProductController{
         try{
             const id = req.params.id
             const user = req.session.user
-            const productFound = await productService.getProductsByIdService(id)
-            console.log("producto: ", productFound)
-            res.render('productView', {product: productFound, user: user})
+            const product = await productService.getProductsByIdService(id)
+            console.log("producto: ", product)
+            res.render('productView', {product: product, user: user})
         }catch(err){
             res.status(400).send({error: err})
         }

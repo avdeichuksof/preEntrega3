@@ -1,7 +1,5 @@
 import CartService from "../services/cartsService.js"
 const cartService = new CartService()
-import SessionController from './sessionController.js'
-const sessionController = new SessionController()
 import TicketService from "../services/ticketService.js"
 const ticketService = new TicketService()
 import sendEmail from "./emailController.js"
@@ -28,8 +26,9 @@ class CartController{
     getCartByIdController = async (req, res) => {
         try{
             const id = req.params.id
+            const user = req.session.user
             const cart = await cartService.getCartByIdService(id)
-            res.render('cart', {cart})
+            res.render('cartView', {cart: cart,  user: user})
         }catch(err){
             res.status(400).send({error: err})
         }

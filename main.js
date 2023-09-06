@@ -93,11 +93,6 @@ io.on('connection', async (socket) => {
         io.sockets.emit('all-products', products)
     })
 
-    socket.on('addToCart', async (data) => {
-        const cart = await cartService.getCartByIdService(data)
-        socket.emit('getCart', cart)
-    })
-
     socket.on('deleteProduct', async (data) => {
         await Product.deleteOne({_id: data})
         const products = await productService.getProductsService()

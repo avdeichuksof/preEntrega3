@@ -1,11 +1,13 @@
-<nav>
-    <div class="navbar-nav">
-        <a class="nav-link" href="/home">Productos</a>
-        <a class="nav-link cart" href="/api/carts/{{user.cart._id}}">Carrito</a>
-        <a class="nav-link active" href="/chat">Chat</a>
-        <a class="nav-link" href="/auth/logout">Logout</a>
-    </div>
-</nav>
+{{#if user}}
+    <nav class="container-fluid ">
+        <div class="navbar-nav d-flex">
+            <a class="nav-link" href="/home">Productos</a>
+            <a class="nav-link cart" href="/api/carts/{{user.cart}}">Carrito</a>
+            <a class="nav-link" href="/chat">Chat</a>
+            <a class="nav-link" href="/auth/logout">Logout</a>
+        </div>
+    </nav>
+{{/if}}
 
 
 <div class="container">

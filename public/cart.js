@@ -22,26 +22,3 @@ const getCart = async () => {
         return null
     }
 }
-
-function addToCart(){
-    const addProd =  document.getElementById('btnAdd')
-    addProd.addEventListener('click', async () => {
-        const quantity = document.getElementById('quantityInput')
-        const prodId = addProd.dataset.id
-        console.log('ID producto:', prodId)
-        const cart = await getCart()
-        
-        try{
-            const res = await fetch(`/api/carts/${cart}/products/${prodId}`, {
-                body: JSON.stringify({quantity: quantity.value})
-            })
-            const toAdd = await res.json()
-            console.log('Product added to cart', toAdd)
-            socket.emit('addToCart', toAdd)
-            return false
-        }catch(err){
-            console.log('Error adding product to cart', err)
-        }
-
-    })
-}

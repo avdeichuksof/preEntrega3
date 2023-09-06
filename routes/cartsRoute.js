@@ -11,7 +11,7 @@ router.get('/:cid/purchases', cartController.getPurchaseController)
 router.get('/:cid/purchase', cartController.generatePurchaseController)
 
 router.post('/', cartController.addCartController)
-router.post('/:cid/product/:pid', isUser, cartController.addProductToCartController)
+router.post('/:cid/product/:pid', cartController.addProductToCartController)
 
 router.put('/:cid', cartController.updateCartController)
 router.put('/:cid/product/:pid', cartController.updateQuantityController)
